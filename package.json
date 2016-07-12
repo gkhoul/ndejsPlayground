@@ -4,6 +4,11 @@
   "private": true,
   "devDependencies": {
     "chai": "^3.5.0",
-    "http-server": "^0.9.0"
+    "http-server": "^0.9.0",
+    "jake": "^8.0.12",
+    "semver": "^5.2.0"
+  },
+  "engines": {
+    "node": "5.10.1"
   }
 }
