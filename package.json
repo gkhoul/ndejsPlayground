@@ -9,6 +9,7 @@
     "jake": "^8.0.12",
     "jshint": "^2.9.2",
     "karma": "^1.1.1",
+    "karma-commonjs": "^1.0.0",
     "karma-expect": "^1.1.2",
     "object-merge": "^2.5.1",
     "semver": "^5.2.0",
