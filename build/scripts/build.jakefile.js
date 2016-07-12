@@ -10,6 +10,7 @@
     var jshintConfig = require("../config/jshint.conf.js");
     var shell = require("shelljs");
     var browserify = require("../util/browserify_runner.js");
+    var karma = require("../util/karma_runner");
 
     var startTime = Date.now();
 
@@ -88,6 +89,12 @@
         console.log("Copying server code: .");
         shell.cp("-R", "src/server/server.js", "src/run.js", distDir);
     });
+
+    desc("Start karma server");
+    task("karma", function () {
+        karma.serve("build/config/karma.conf.js", complete, fail);
+
+    }, { async: true });
 
     directory(distDir);
     directory(clientDistdir);
