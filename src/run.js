@@ -3,11 +3,11 @@
 (function() {
 	"use strict";
 
-	var server = require("./server/server.js");
+	var server = require("./server.js");
 
 	var port = process.argv[2];
 
-	server.start(port, "./src", function() {
+	server.start(port, "generated/dist/client", function() {
 		console.log("Server started on port " + port);
 	});
 }());
