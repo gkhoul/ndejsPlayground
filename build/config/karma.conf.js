@@ -2,6 +2,7 @@
 // Generated on Wed Jul 13 2016 00:20:55 GMT+0500 (Ekaterinburg Standard Time)
 
 module.exports = function(config) {
+  'use strict';
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -66,5 +67,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  })
-}
+  });
+};
