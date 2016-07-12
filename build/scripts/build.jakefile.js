@@ -1,4 +1,4 @@
-/* global desc, task, console, require, complete, fail, process, jake */
+/* global desc, task, console, require, complete, fail, process, jake, directory */
 
 (function () {
     'use strict';
@@ -9,7 +9,7 @@
     var startTime = Date.now();
     desc("Lint and test");
 
-    task("default", [ "version", "lintNode", "lintClient" ], function () {
+    task("default", [ "version", "lintNode", "lintClient", "build" ], function () {
         var elapsedSeconds = (Date.now() - startTime) / 1000;
         console.log("\nBuild Ok + (" + elapsedSeconds.toFixed(2) + "s)");
     });
@@ -55,5 +55,36 @@
             strict: true
         }, complete, fail);
     }, {async: true});
+
+    desc("Build distribution package");
+    task("build", [ "prepDistDir", "buildClient", "buildServer" ]);
+
+    task("prepDistDir", function() {
+        shell.rm("-rf", "/generated/dist");
+    });
+
+    task("buildClient", [ paths.clientDistDir, "bundleClientJs" ], function() {
+        console.log("Copying client code: .");
+        shell.cp(paths.clientDir + "/*.html", paths.clientDir + "/*.css", paths.clientDistDir);
+    });
+
+    task("bundleClientJs", [ paths.clientDistDir ], function() {
+        console.log("Bundling browser code with Browserify: .");
+        browserify.bundle({
+            entry: paths.clientEntryPoint,
+            outfile: paths.clientDistBundle,
+            options: {
+                standalone: "example",
+                debug: true
+            }
+        }, complete, fail);
+    }, { async: true });
+
+    task("buildServer", function() {
+        console.log("Copying server code: .");
+        shell.cp("-R", "src/server/", "src/run.js", paths.distDir);
+    });
+
+    directory("/generated/dist");
 
 }());
