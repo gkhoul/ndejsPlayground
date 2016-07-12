@@ -1,7 +1,7 @@
 /**
  * Created by usr on 12.07.2016.
  */
-/* global console */
+/* global console, node */
 
 (function () {
     'use strict';
