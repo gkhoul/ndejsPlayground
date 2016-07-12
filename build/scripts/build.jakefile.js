@@ -69,13 +69,13 @@
     });
     task("buildClient", [ clientDistdir, "bundleClientJs"], function() {
         console.log("Copying client code: .");
-        shell.cp("src/*.html", "src/*.css", "generated/dist/client");
+        shell.cp("src/client/*.html", "src/client/*.css", "generated/dist/client");
     });
 
     task("bundleClientJs", [ clientDistdir ], function() {
         console.log("Bundling browser code with Browserify: .");
         browserify.bundle({
-            entry: "src/example.js",
+            entry: "src/client/example.js",
             outfile: "generated/dist/client/bundle.js",
             options: {
                 standalone: "example",
