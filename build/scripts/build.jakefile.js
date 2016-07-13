@@ -11,7 +11,6 @@
     var shell = require("shelljs");
     var browserify = require("../util/browserify_runner.js");
     var karma = require("../util/karma_runner");
-    var testedBrowsers = require("../config/tested_browsers.js");
 
     var startTime = Date.now();
 
@@ -37,7 +36,7 @@
     task("lintClient", function () {
         process.stdout.write("Linting browser code: .");
         jshint.checkFiles({
-            files: [ "src/**/*.js" ],
+            files: [ "src/**/*.js", "build/**/*.js" ],
             options: {
                 node: jshintConfig.clientOptions
             },

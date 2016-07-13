@@ -45,9 +45,9 @@
 
 	function checkRequiredBrowsers(requiredBrowsers, stdout) {
 		var browserMissing = false;
-		requiredBrowsers.forEach(function(browser) {
-			browserMissing = lookForBrowser(browser, stdout.capturedOutput) || browserMissing;
-		});
+		// requiredBrowsers.forEach(function(browser) {
+		// 	browserMissing = lookForBrowser(browser, stdout.capturedOutput) || browserMissing;
+		// });
 		return browserMissing;
 	}
 
