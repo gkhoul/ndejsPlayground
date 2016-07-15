@@ -103,8 +103,11 @@
         console.log("Testing browser code");
         karma.runTests({
             configFile: karmaConfig,
-            browsers: {},
-            strict: true
+            browsers: [
+                "Yandex Browser 16.6.0 (Windows 7 0.0.0)",
+                "Firefox 47.0.0 (Windows 7 0.0.0)"
+            ],
+            strict: !process.env.loose
         }, complete, fail);
     });
 
