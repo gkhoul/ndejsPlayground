@@ -15,7 +15,7 @@
     var startTime = Date.now();
 
     desc("Lint and test");
-    task("default", [ "version", "lintNode", "lintClient", "buildClient" ], function () {
+    task("default", [ "version", "lintNode", "lintClient", "buildClient" , "test"], function () {
         var elapsedSeconds = (Date.now() - startTime) / 1000;
         console.log("\nBuild Ok + (" + elapsedSeconds.toFixed(2) + "s)");
     });
