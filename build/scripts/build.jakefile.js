@@ -12,6 +12,8 @@
     var browserify = require("../util/browserify_runner.js");
     var karma = require("../util/karma_runner");
 
+    var karmaConfig = "build/config/karma.conf.js";
+
     var startTime = Date.now();
 
     desc("Lint and test");
@@ -92,7 +94,7 @@
 
     desc("Start karma server");
     task("karma", function () {
-        karma.serve("build/config/karma.conf.js", complete, fail);
+        karma.serve(karmaConfig, complete, fail);
 
     }, { async: true });
 
@@ -100,7 +102,7 @@
     task("test", function () {
         console.log("Testing browser code");
         karma.runTests({
-            configFile: "build/config/karma.conf.js",
+            configFile: karmaConfig,
             browsers: {},
             strict: true
         }, complete, fail);
