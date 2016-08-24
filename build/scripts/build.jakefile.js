@@ -104,8 +104,7 @@
         karma.runTests({
             configFile: karmaConfig,
             browsers: [
-                "Yandex Browser 16.6.0 (Windows 7 0.0.0)",
-                "Firefox 47.0.0 (Windows 7 0.0.0)"
+                "Chrome 52.0.2743 (Windows 7 0.0.0)"
             ],
             strict: !process.env.loose
         }, complete, fail);
